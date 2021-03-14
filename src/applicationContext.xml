@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy/><!--开启注解-->
+    <bean id="goodsDao" class="aopDemo1.GoodsDaoImpl"/>
+    <bean id="myAspect" class="test.MyAspect"/>
+    <bean id="myAspect4Annotation" class="test.MyAspect4Annotation"/>
+
+    <!--二、注解方式-->
+
+    <!--一、配置AOP-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;配置切点（给哪个方法增强）&ndash;&gt;-->
+<!--        <aop:pointcut id="savePoint" expression="execution(* aopDemo1.GoodsDaoImpl.save(..))"/>-->
+<!--        <aop:pointcut id="updatePoint" expression="execution(* aopDemo1.GoodsDaoImpl.update(..))"/>-->
+<!--        <aop:pointcut id="deletePoint" expression="execution(* aopDemo1.GoodsDaoImpl.delete(..))"/>-->
+<!--        &lt;!&ndash;配置切面（增强的功能从哪里来，是什么）&ndash;&gt;-->
+<!--        <aop:aspect ref="myAspect">-->
+<!--            &lt;!&ndash; 前置通知&ndash;&gt;-->
+<!--           <aop:before method="check" pointcut-ref="savePoint"/>-->
+<!--            &lt;!&ndash;后置通知: 可将切点方法的返回值带入切面方法中&ndash;&gt;-->
+<!--            <aop:after-returning method="log" pointcut-ref="updatePoint" returning="res"/>-->
+<!--            &lt;!&ndash;环绕通知&ndash;&gt;-->
+<!--            <aop:around method="handleTrancation" pointcut-ref="deletePoint"/>-->
+<!--            &lt;!&ndash;异常抛出通知&ndash;&gt;-->
+<!--            <aop:after-throwing method="exceptionNotice" pointcut-ref="deletePoint" throwing="ex"/>-->
+<!--            &lt;!&ndash;最终通知: 不论是否抛出异常都会执行&ndash;&gt;-->
+<!--            <aop:after method="finallyNotice" pointcut-ref="deletePoint"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+</beans>
